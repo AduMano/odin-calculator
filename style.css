@@ -83,7 +83,9 @@ button {
             justify-content: center;
 
             text-align: right;
-            box-shadow: 0 10px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+
+            z-index: 5;
         }
 
         .container .calculator .actions {
