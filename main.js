@@ -8,10 +8,6 @@ window.onload = () => {
     let keys = document.querySelector(".keys");
     let mainDisplay = document.querySelector(".mainDisplay");
     let secondaryDisplay = document.querySelector(".secondaryDisplay");
-    
-    /// State
-    let theresDot = false;
-    let pressing = false;
 
     /// Functions
     const updateScreen = () => {
@@ -40,6 +36,8 @@ window.onload = () => {
             break;
             case "divide" :
                 result = num1 / num2;
+
+                (isNaN(result)) ? result = 0 : result = result;
             break;
         }
         
@@ -71,7 +69,7 @@ window.onload = () => {
                     "divide": " ÷ "
                 };
 
-                if (operandOne === "0") return;
+                if (operandOne === "0" || operandOne === "Infinity") return;
                 else if (operandOne !== "0" && operandTwo !== "") {
                     // This means if theres already an existing
                     // operation, this will immediately calculate
@@ -85,7 +83,7 @@ window.onload = () => {
                     operator = value;
                     return;
 
-                };
+                }
 
                 // Set Operator
                 operator = value;
@@ -100,12 +98,19 @@ window.onload = () => {
             break;
             case "dot" :
                 if (operandOne.includes(".")) return;
+                else if (operandOne === "Infinity") return;
                 operandOne += value;
 
                 updateScreen();
             break;
             case "backspace" :
                 if (operandOne == "0") return;
+                else if (operandOne === "Infinity") {
+                    operandOne = "0";
+
+                    updateScreen();
+                    return;
+                }
                 let temp = operandOne.substring(0, operandOne.length - 1);
                 
                 // Remove last number
@@ -131,9 +136,6 @@ window.onload = () => {
                 updateScreen();
             break;
         }
-
-        // For Debugging
-        // console.log(`Operand 1: ${operandOne}\nOperator: ${operator}\nOperand 2: ${operandTwo}`);
     }
 
     /// Events

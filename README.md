@@ -41,5 +41,12 @@ last elements = takes 2 space Vertically
 > Added CSS on my HTML Structure. Will be working on JS for now
 
 > [!NOTE]
-> #### ENTRY #2 [JUNE 10, 2024 : 04:01 AM]
+> #### ENTRY #3 [JUNE 10, 2024 : 04:01 AM]
 > Done adding all features.
+
+> [!NOTE]
+> #### ENTRY #4 [JUNE 10, 2024 : 06:03 AM]
+> - Removed all unused variables and operations and commented syntax
+> - Fixed where you can still enter decimal point and operators when got Infinity
+> - When backspacing the result "Infinity", it should clear it instead
+> - dividing 0. to itself results to NaN, Ill return 0 instead (Since division by 0 is Infinity, but ill return it to 0)
