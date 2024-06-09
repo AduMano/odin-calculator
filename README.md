@@ -39,3 +39,7 @@ last elements = takes 2 space Vertically
 > [!NOTE]
 > #### ENTRY #2 [JUNE 10, 2024 : 02:10 AM]
 > Added CSS on my HTML Structure. Will be working on JS for now
+
+> [!NOTE]
+> #### ENTRY #2 [JUNE 10, 2024 : 04:01 AM]
+> Done adding all features.
