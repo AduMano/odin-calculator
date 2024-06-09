@@ -4,6 +4,7 @@ window.onload = () => {
     let operator = "";
     let operandTwo = "";
     let input = "";
+    let timer = null;
 
     // Get the parent of the button
     let keys = document.querySelector(".keys");
@@ -13,25 +14,25 @@ window.onload = () => {
     let pressing = false;
 
     /// Functions
-    const getinput = (value, type) => {
+    const getInput = (value, type) => {
         switch(type) {
             case "number" :
-
+                console.log(value);
             break;
             case "operator" :
-
+                console.log(value);
             break;
             case "dot" :
-
+                console.log(value);
             break;
             case "backspace" :
-
+                console.log(type);
             break;
             case "equal" :
-
+                console.log(type);
             break;
             case "clear" :
-
+                console.log(type);
             break;
         }
     }
@@ -41,15 +42,40 @@ window.onload = () => {
         let elem = e.target;
 
         if (elem.getAttribute("data-type") !== null) {
-            getinput(elem.getAttribute("data-value"), elem.getAttribute("data-type"));
+            getInput(elem.getAttribute("data-value"), elem.getAttribute("data-type"));
         }
     });
 
     // Keyboard Support
     document.addEventListener("keydown", (e) => {
+        let numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+        let operators = ["+", "-", "*", "/"];
+        let keys = ["Enter", "Backspace", "Escape"];
 
-    });
-    document.addEventListener("keyup", (e) => {
+        if (e.key === ".") {
+            getInput(".", "dot");
+        }
+        else if (numbers.includes(e.key)) {
+            getInput(e.key, "number");
+        }
+        else if (operators.includes(e.key)) {
+            let operatorList = {
+                "+": "add", 
+                "-": "subtract",
+                "*": "multiply",
+                "/": "divide"
+            };
 
+            getInput(operatorList[e.key], "operator");
+        }
+        else if (keys.includes(e.key)) {
+            let keysList = {
+                "Escape": "clear",
+                "Backspace": "backspace",
+                "Enter": "equal"
+            };
+
+            getInput("", keysList[e.key]);
+        }
     });
 }
