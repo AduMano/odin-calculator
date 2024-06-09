@@ -151,6 +151,11 @@ window.onload = () => {
         let operators = ["+", "-", "*", "/"];
         let keys = ["Enter", "Backspace", "Escape"];
 
+        // Disable Tab Indexing
+        if (e.key === "Tab") {
+            e.preventDefault();
+        }
+
         if (e.key === ".") {
             getInput(".", "dot");
         }
