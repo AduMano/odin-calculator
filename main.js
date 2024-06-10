@@ -148,11 +148,11 @@ window.onload = () => {
     });
 
     // Keyboard Support
-    document.addEventListener("keydown", (e) => {
-        let numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-        let operators = ["+", "-", "*", "/"];
-        let keys = ["Enter", "Backspace", "Escape"];
+    let numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    let operators = ["+", "-", "*", "/"];
+    let keyCode = ["Enter", "Backspace", "Escape"];
 
+    document.addEventListener("keydown", (e) => {
         // Disable Tab Indexing
         if (e.key === "Tab") {
             e.preventDefault();
@@ -160,9 +160,11 @@ window.onload = () => {
 
         if (e.key === ".") {
             getInput(".", "dot");
+            document.querySelector(`button[data-value="${e.key}"]`).classList.add("active");
         }
         else if (numbers.includes(e.key)) {
             getInput(e.key, "number");
+            document.querySelector(`button[data-value="${e.key}"]`).classList.add("active");
         }
         else if (operators.includes(e.key)) {
             let operatorList = {
@@ -173,15 +175,41 @@ window.onload = () => {
             };
 
             getInput(operatorList[e.key], "operator");
+            document.querySelector(`button[data-value="${operatorList[e.key]}"]`).classList.add("active");
+            }
+        else if (keyCode.includes(e.key)) {
+            let keysList = {
+                "Escape": "clear",
+                "Backspace": "backspace",
+                "Enter": "equal"
+            };
+            
+            getInput("", keysList[e.key]);
+            document.querySelector(`button[data-type="${keysList[e.key]}"]`).classList.add("active");
         }
-        else if (keys.includes(e.key)) {
+    });
+    document.addEventListener("keyup", (e) => {
+        if (e.key === "." || numbers.includes(e.key)) {
+            document.querySelector(`button[data-value="${e.key}"]`).classList.remove("active");
+        }
+        else if (operators.includes(e.key)) {
+            let operatorList = {
+                "+": "add", 
+                "-": "subtract",
+                "*": "multiply",
+                "/": "divide"
+            };
+
+            document.querySelector(`button[data-value="${operatorList[e.key]}"]`).classList.remove("active");
+        }
+        else if (keyCode.includes(e.key)) {
             let keysList = {
                 "Escape": "clear",
                 "Backspace": "backspace",
                 "Enter": "equal"
             };
 
-            getInput("", keysList[e.key]);
+            document.querySelector(`button[data-type="${keysList[e.key]}"]`).classList.remove("active");
         }
     });
 }

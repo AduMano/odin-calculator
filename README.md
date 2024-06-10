@@ -50,3 +50,7 @@ last elements = takes 2 space Vertically
 > - Fixed where you can still enter decimal point and operators when got Infinity
 > - When backspacing the result "Infinity", it should clear it instead
 > - dividing 0. to itself results to NaN, Ill return 0 instead (Since division by 0 is Infinity, but ill return it to 0)
+
+> [!NOTE]
+> #### ENTRY #5 [JUNE 11, 2024 : 03:47 AM]
+> - Added Animation on key press, so that theres visual effects
